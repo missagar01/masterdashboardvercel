@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components\\\\dashboards\\\\checklist-dashboard.tsx -> ../Checklist-Dashboard/Dashboard\":{\"id\":\"components\\\\dashboards\\\\checklist-dashboard.tsx -> ../Checklist-Dashboard/Dashboard\",\"files\":[\"static/chunks/_app-pages-browser_components_Checklist-Dashboard_Dashboard_jsx.js\"]}}"

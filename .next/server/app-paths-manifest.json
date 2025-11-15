@@ -1,0 +1,5 @@
+{
+  "/api/env/supabase/route": "app/api/env/supabase/route.js",
+  "/api/sheets/route": "app/api/sheets/route.js",
+  "/page": "app/page.js"
+}
