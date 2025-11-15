@@ -47,11 +47,9 @@ export default function MainContent({ activeSystem }: MainContentProps) {
   }
 
   return (
-    <main
-      className="flex-1 min-w-0 overflow-auto bg-gradient-to-br from-background via-background to-secondary/5 w-full lg:w-[calc(100vw-16rem)]"
-    >
-      <div className="w-full h-full p-0">
-        <div className="w-full h-full animate-fadeInUp">
+    <main className="flex-1 min-h-screen w-full min-w-0 overflow-y-auto bg-gradient-to-br from-background via-background to-secondary/5 lg:w-[calc(100vw-16rem)]">
+      <div className="w-full px-4 pb-10 pt-20 sm:px-6 sm:pt-24 lg:px-10 lg:pt-10">
+        <div className="w-full animate-fadeInUp space-y-6">
           {renderDashboard()}
         </div>
       </div>

@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <SidebarProvider>
       <SheetsProvider>
-        <div className="flex h-screen bg-background">
+        <div className="flex min-h-screen w-full flex-col bg-background lg:flex-row">
           <Sidebar activeSystem={activeSystem} onSystemChange={setActiveSystem} />
           <MainContent activeSystem={activeSystem} />
         </div>

@@ -1,9 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Type as type, type LucideIcon, CheckSquare, Calendar, ShoppingCart, FileText, Wrench, Package, Zap, FileStack, BarChart3, CreditCard, Navigation, Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { type CSSProperties, useMemo, useState } from 'react'
 
 interface SidebarItem {
   id: string
@@ -28,9 +27,24 @@ const sidebarItems: SidebarItem[] = [
 
 export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem: string; onSystemChange: (id: string) => void }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const sidebarSurfaceStyles = useMemo<CSSProperties>(
+    () => ({
+      backgroundColor: 'var(--color-sidebar)',
+      color: 'var(--color-sidebar-foreground)',
+    }),
+    []
+  )
+
+  const sidebarHeaderStyles = useMemo<CSSProperties>(
+    () => ({
+      backgroundImage: 'linear-gradient(120deg, var(--color-primary) 0%, var(--color-accent) 100%)',
+      color: 'var(--color-primary-foreground)',
+    }),
+    []
+  )
 
   const NavigationItems = () => (
-    <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+    <nav className="flex-1 space-y-2 overflow-y-auto p-4">
       {sidebarItems.map((item) => {
         const Icon = item.icon
         const isActive = activeSystem === item.id
@@ -66,15 +80,20 @@ export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem
       {/* Mobile Menu Toggle Button */}
       <button
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="fixed top-4 left-4 z-50 lg:hidden bg-primary text-primary-foreground p-2 rounded-lg hover:bg-primary/90 transition-colors"
+        className="fixed top-4 left-4 z-50 rounded-lg bg-primary p-2 text-primary-foreground shadow-lg ring-1 ring-black/5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 lg:hidden"
+        aria-label={mobileMenuOpen ? 'Close dashboard navigation' : 'Open dashboard navigation'}
+        aria-expanded={mobileMenuOpen}
       >
         {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       {/* Desktop Sidebar - Always visible on lg screens */}
-      <div className="w-64 bg-sidebar border-r border-sidebar-border flex flex-col shadow-2xl hidden lg:flex">
+      <div
+        className="hidden w-64 flex-col border-r border-sidebar-border shadow-2xl lg:flex lg:sticky lg:top-0 lg:h-screen lg:self-start"
+        style={sidebarSurfaceStyles}
+      >
         {/* Header */}
-        <div className="p-6 border-b border-sidebar-border bg-gradient-to-r from-primary/10 to-accent/10">
+        <div className="border-b border-sidebar-border p-6" style={sidebarHeaderStyles}>
           <div className="flex items-center gap-3">
             <div className="gradient-purple w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
               <span className="text-primary-foreground font-bold text-xl">MD</span>
@@ -90,7 +109,7 @@ export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem
         <NavigationItems />
 
         {/* Footer */}
-        <div className="p-4 border-t border-sidebar-border">
+        <div className="border-t border-sidebar-border p-4">
           <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30">
             <div className="gradient-purple w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-primary-foreground">
               A
@@ -106,12 +125,15 @@ export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem
       {mobileMenuOpen && (
         <>
           <div
-            className="fixed inset-0 bg-black/50 lg:hidden z-40"
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity lg:hidden"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="fixed left-0 top-0 h-full w-64 bg-sidebar border-r border-sidebar-border flex flex-col shadow-2xl z-40 lg:hidden">
+          <div
+            className="fixed left-0 top-0 z-50 flex h-full w-72 max-w-[85vw] flex-col border-r border-sidebar-border shadow-2xl lg:hidden"
+            style={sidebarSurfaceStyles}
+          >
             {/* Header */}
-            <div className="p-6 border-b border-sidebar-border bg-gradient-to-r from-primary/10 to-accent/10">
+            <div className="border-b border-sidebar-border p-6" style={sidebarHeaderStyles}>
               <div className="flex items-center gap-3">
                 <div className="gradient-purple w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
                   <span className="text-primary-foreground font-bold text-xl">MD</span>
@@ -127,7 +149,7 @@ export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem
             <NavigationItems />
 
             {/* Footer */}
-            <div className="p-4 border-t border-sidebar-border">
+            <div className="border-t border-sidebar-border p-4">
               <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30">
                 <div className="gradient-purple w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-primary-foreground">
                   A
