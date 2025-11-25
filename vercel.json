@@ -1,0 +1,9 @@
+{
+  "env": {
+    "NEXT_PUBLIC_SUBSCRIPTION_API_BASE": "@subscription_api_base",
+    "NEXT_PUBLIC_REPAIR_API_BASE": "@repair_api_base",
+    "NEXT_PUBLIC_MAINTENANCE_API_BASE": "@maintenance_api_base",
+    "NEXT_PUBLIC_STORE_API_BASE": "@store_api_base",
+    "NEXT_PUBLIC_API_BASE_URL": "@default_api_base"
+  }
+}

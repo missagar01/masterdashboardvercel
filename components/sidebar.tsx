@@ -16,8 +16,9 @@ const sidebarItems: SidebarItem[] = [
   { id: 'planning', label: '12 Week Planning', icon: Calendar, gradient: 'gradient-orange' },
   { id: 'purchase', label: 'Store Purchase', icon: ShoppingCart, gradient: 'gradient-yellow' },
   { id: 'enquiry', label: 'Enquiry Management', icon: FileText, gradient: 'gradient-teal' },
+  { id: 'machine-maintenance', label: 'Machine Maintenance', icon: Wrench, gradient: 'gradient-purple' },
   { id: 'maintenance', label: 'Vehicle Maintenance', icon: Wrench, gradient: 'gradient-pink' },
-  { id: 'o2d', label: 'Order to Delivery', icon: Package, gradient: 'gradient-purple' },
+  { id: 'o2d', label: 'O2D System', icon: Package, gradient: 'gradient-purple' },
   { id: 'documents', label: 'Documents', icon: FileStack, gradient: 'gradient-orange' },
   { id: 'billet', label: 'Billet Production', icon: BarChart3, gradient: 'gradient-yellow' },
   { id: 'repair', label: 'Repair System', icon: Zap, gradient: 'gradient-teal' },
@@ -100,7 +101,7 @@ export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Master Dashboard</h1>
-              <p className="text-xs text-muted-foreground">11 Management Systems</p>
+              <p className="text-xs text-muted-foreground">12 Management Systems</p>
             </div>
           </div>
         </div>
@@ -135,15 +136,15 @@ export default function Sidebar({ activeSystem, onSystemChange }: { activeSystem
             {/* Header */}
             <div className="border-b border-sidebar-border p-6" style={sidebarHeaderStyles}>
               <div className="flex items-center gap-3">
-                <div className="gradient-purple w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-primary-foreground font-bold text-xl">MD</span>
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Master Dashboard</h1>
-                  <p className="text-xs text-muted-foreground">11 Systems</p>
-                </div>
+              <div className="gradient-purple w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-primary-foreground font-bold text-xl">MD</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Master Dashboard</h1>
+                <p className="text-xs text-muted-foreground">12 Systems</p>
               </div>
             </div>
+          </div>
 
             {/* Navigation Items */}
             <NavigationItems />

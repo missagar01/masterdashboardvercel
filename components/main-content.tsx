@@ -11,6 +11,7 @@ import BilletDashboard from './dashboards/billet-dashboard'
 import RepairDashboard from './dashboards/repair-dashboard'
 import SubscriptionDashboard from './dashboards/subscription-dashboard'
 import TravelDashboard from './dashboards/travel-dashboard'
+import MachineMaintenanceDashboard from './dashboards/machine-maintenance-dashboard'
 
 interface MainContentProps {
   activeSystem: string
@@ -29,6 +30,8 @@ export default function MainContent({ activeSystem }: MainContentProps) {
         return <EnquiryDashboard />
       case 'maintenance':
         return <MaintenanceDashboard />
+      case 'machine-maintenance':
+        return <MachineMaintenanceDashboard />
       case 'o2d':
         return <O2DDashboard />
       case 'documents':
